@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<Annonce_Asp.netCore.Models.AppUsers> SignInManager
+@inject UserManager<Annonce_Asp.netCore.Models.AppUsers> UserManager
+@if (SignInManager.IsSignedIn(User))
+{
+    var userId = @UserManager.GetUserId(User);
+    var getuser = UserManager.Users.SingleOrDefault(u => u.Id == userId);
+
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @if (getuser.image == null)
+                {
+                    <i class="fas fa-user fa-fw"></i>
+                }
+                else
+                {
+                    <img style="width:40px;height:40px;border-radius:50%" class="img-responsive" src="~/Image_User/@getuser.image">
+                }
+                @getuser.nom @getuser.prenom
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="/Account_Admin/changePassword">Change Password</a>
+                @if (getuser.image == null)
+                {
+                    <a class="dropdown-item" href="/Account_Admin/Change_Image">Add Image</a>
+                }
+                else
+                {
+                    <a class="dropdown-item" href="/Account_Admin/Change_Image">Change Image</a>
+                }
+            <a class="dropdown-item" href="/Home/Index">Page Principal</a>
+                <div class="dropdown-divider"></div>
+                <form method="post">
+                    <button class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</button>
+                </form>
+
+            </div>
+        </li>
+    </ul>
+}

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Annonce_Asp.netCore.Models.Annonces>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <br />
+    <br />
+<h2>Listes Des Annonces</h2>
+<br/>
+<hr/>
+
+<p>
+    <a asp-action="Create" class="genric-btn success circle arrow">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+               Annonce Texte
+            </th>
+            <th>
+Image
+            </th>
+
+            <th>
+              Date Publiciter
+            </th>
+            <th>Mettre â jour</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @item.Ann_Texte.Substring(0, 50)......
+                </td>
+                <td>
+                    <img src="~/Image_Ann/@item.images" class="img-thumbnail" style="width:100px;height:90px" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_Publiciter)
+                </td>
+                <td>
+                    <a href="/Annoces/Edit/@item.id" class="genric-btn primary small" style="width:10px;padding-left:8px;padding-right:20px"><i class="fa fa-edit"></i></a>
+                    <a href="/Annoces/Details/@item.id" class="genric-btn success small" style="width:10px;padding-left:8px;padding-right:20px"><i class="fa fa-eye"></i></a>
+                    <a href="/Annoces/Delete/@item.id" class="genric-btn danger small" style="width:10px;padding-left:8px;padding-right:20px"><i class="fa fa-trash"></i></a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section principal{ }

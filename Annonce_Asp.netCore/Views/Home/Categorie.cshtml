@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Annonce_Asp.netCore.Models.Categories>
+
+<section class="whats-news-area pt-50 pb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-lg-3 col-md-3">
+                        <div class="section-tittle mb-30">
+                            <h3>All Catégories</h3>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Nav Card -->
+                        <div class="tab-content" id="nav-tabContent">
+                          
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="whats-news-caption">
+                                    <div class="row">
+                                        @foreach (var item in Model)
+                                        {
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="single-what-news mb-100">
+                                                    <div class="what-img">
+                                                        <img src="~/Image_Cat/@item.Image" style="width:360px;height:350px" alt="">
+                                                    </div>
+                                                    <div class="what-cap">
+                                                        <span class="color1">Night party</span>
+                                                        <h4><a href="/Home/Details_Cat/@item.id">@item.nom_Cat</a></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <!-- Section Tittle -->
+                <div class="section-tittle mb-40">
+                    <h3>Follow Us</h3>
+                </div>
+                <!-- Flow Socail -->
+                <div class="single-follow mb-45">
+                    <div class="single-box">
+                        <div class="follow-us d-flex align-items-center">
+                            <div class="follow-social">
+                                <a href="#"><img src="~/assets/img/news/icon-fb.png" alt=""></a>
+                            </div>
+                            <div class="follow-count">
+                                <span>8,045</span>
+                                <p>Fans</p>
+                            </div>
+                        </div>
+                        <div class="follow-us d-flex align-items-center">
+                            <div class="follow-social">
+                                <a href="#"><img src="~/assets/img/news/icon-tw.png" alt=""></a>
+                            </div>
+                            <div class="follow-count">
+                                <span>8,045</span>
+                                <p>Fans</p>
+                            </div>
+                        </div>
+                        <div class="follow-us d-flex align-items-center">
+                            <div class="follow-social">
+                                <a href="#"><img src="~/assets/img/news/icon-ins.png" alt=""></a>
+                            </div>
+                            <div class="follow-count">
+                                <span>8,045</span>
+                                <p>Fans</p>
+                            </div>
+                        </div>
+                        <div class="follow-us d-flex align-items-center">
+                            <div class="follow-social">
+                                <a href="#"><img src="~/assets/img/news/icon-yo.png" alt=""></a>
+                            </div>
+                            <div class="follow-count">
+                                <span>8,045</span>
+                                <p>Fans</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Poster -->
+                <div class="news-poster d-none d-lg-block">
+                    <img src="~/assets/img/news/news_card.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section principal{ }

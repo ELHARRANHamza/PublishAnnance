@@ -1,0 +1,21 @@
+﻿@model Annonce_Asp.netCore.Models.Categories
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div>
+    <h4>Categories</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+Nom Du Catégories : 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.nom_Cat)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-warning">Edit</a> |
+    <a asp-action="Index" class="btn btn-outline-warning">Back to List</a>
+</div>

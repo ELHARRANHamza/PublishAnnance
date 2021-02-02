@@ -1,0 +1,48 @@
+﻿@model Annonce_Asp.netCore.Models.Latest_News
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Latest News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+Vidéo : 
+        </dt>
+        <dd>
+            <iframe src="@Model.url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titre) : 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description) : 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image) : 
+        </dt>
+        <dd>
+            <img src="~/Image_News/@Model.Image" style="width:500px;height:300px" />
+        </dd>
+        <dt>
+Date Publicité : 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.date_Publiciter)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-warning">Edit</a> |
+    <a asp-action="Index" class="btn btn-outline-warning">Back to List</a>
+</div>

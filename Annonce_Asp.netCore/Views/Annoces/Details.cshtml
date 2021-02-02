@@ -1,0 +1,55 @@
+﻿@model Annonce_Asp.netCore.Models.Annonces
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2 style="margin:30px auto">Details</h2>
+
+<div>
+    <h4>Annonces</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+Description : 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ann_Texte)
+        </dd>
+        <dt>
+Email : 
+        </dt>
+        <dd>
+            <p style="color:black">@Model.Ann_Email</p>
+        </dd>
+        <dt>
+          N° Du Telephone : 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telephone)
+        </dd>
+        <dt>
+           Code Postal : 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Code_Postal)
+        </dd>
+        <dt>
+          image : 
+        </dt>
+        <dd>
+            <img src="~/Image_Ann/@Model.images" style="width:500px;height:300px" />
+        </dd>
+        <dt>
+Date Du Publicité : 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.date_Publiciter)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id" class="genric-btn info circle arrow">Edit</a>
+    <a asp-action="Index" class="genric-btn success-border circle arrow">Back to List</a>
+</div>
+@section principal{ }

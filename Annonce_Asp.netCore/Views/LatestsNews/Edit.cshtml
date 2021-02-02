@@ -1,0 +1,49 @@
+﻿@model Annonce_Asp.netCore.ViewModel.News_ViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h3 class="alert-warning" style="padding:10px">Are you sure you want to Edit this?<i class="fa fa-info-circle" style="margin-left:50%"></i></h3>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="url" class="control-label">Vidéo : </label>
+                <br>
+                <iframe src="@Model.url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <input asp-for="url" class="form-control" />
+                <span asp-validation-for="url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titre" class="control-label">Titre : </label>
+                <input asp-for="Titre" class="form-control" />
+                <span asp-validation-for="Titre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description : </label>
+                <textarea asp-for="Description" class="form-control" name="Description" rows="7"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="file" class="control-label"> Image : </label>
+                <img src="~/Image_News/@Model.Image" style="width:500px;height:300px" />
+                <br>
+                <br>
+                <input asp-for="file" class="form-control" />
+                <span asp-validation-for="file" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-info" />
+                <a asp-action="Index" class="btn btn-outline-info">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

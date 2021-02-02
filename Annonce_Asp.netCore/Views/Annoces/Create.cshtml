@@ -1,0 +1,80 @@
+﻿@model Annonce_Asp.netCore.ViewModel.Create_AnnonceViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <br>
+    <br>
+<h4>Create New Annonce</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Ann_Texte" class="control-label">Description : </label>
+                <textarea asp-for="Ann_Texte" class="form-control" name="Ann_Texte"></textarea>
+                <span asp-validation-for="Ann_Texte" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Ann_Email" class="control-label">Email : </label>
+                <input asp-for="Ann_Email" class="form-control" />
+                <span asp-validation-for="Ann_Email" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Telephone" class="control-label">Telephone : </label>
+                <input asp-for="Telephone" class="form-control" />
+                <span asp-validation-for="Telephone" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Code_Postal" class="control-label">Code Postal : </label>
+                <input asp-for="Code_Postal" class="form-control" />
+                <span asp-validation-for="Code_Postal" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="id_Cat" class="control-label">Catégories : </label>
+                <br>
+                <select asp-for="id_Cat" class="form-control" style="width:100%" asp-items="@(new SelectList(Model.categories,"id","nom_Cat"))"></select>
+                <span asp-validation-for="id_Cat" class="text-danger"></span>
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <label asp-for="id_region" class="control-label">Région : </label>
+                <br>
+                <select asp-for="id_region" class="form-control" asp-items="@(new SelectList(Model.region,"id","Region_Nom"))"></select>
+                <span asp-validation-for="id_region" class="text-danger"></span>
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <label asp-for="id_Ville" class="control-label">Ville : </label>
+                <br>
+                <select asp-for="id_Ville" class="form-control" asp-items="@(new SelectList(Model.ville,"id","ville_Name"))"></select>
+                <span asp-validation-for="id_Ville" class="text-danger"></span>
+            </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <label asp-for="file" class="control-label">Add Image</label>
+                <input type="file" asp-for="file" name="file" class="form-control" />
+                <span asp-validation-for="file" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Create" class="genric-btn success circle arrow" />
+                <a asp-action="Index" class="genric-btn success-border circle arrow">
+                    Back to List<span class="lnr lnr-arrow-right"></span>
+                </a>
+
+            </div>
+            <br>
+        </form>
+    </div>
+</div>
+@section principal{ }

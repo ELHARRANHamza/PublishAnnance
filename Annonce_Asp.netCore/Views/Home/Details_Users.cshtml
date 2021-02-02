@@ -1,0 +1,188 @@
+﻿@model Annonce_Asp.netCore.ViewModel.Liste_AnnViewModel
+
+<section class="blog_area section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
+                    @foreach (var item in Model.GetAnnonces)
+                    {
+                        DateTime date = @item.date_Publiciter;
+                        string[] Month = @date.ToLongDateString().Split(" ");
+
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="~/Image_Ann/@item.images" alt="">
+                                <a href="#" class="blog_item_date">
+                                    <h3>@date.Day</h3>
+                                    <p>@Month[2]</p>
+                                </a>
+                            </div>
+
+                            <div class="blog_details">
+                                <a href="#">
+                                    <h5>
+                                        @if (item.users.image == null)
+                                        {
+                                            <i class="fa fa-user"></i>
+
+                                        }@if (item.users.image != null)
+                                        {
+                                            <img src="~/Image_User/@item.users.image" style="width:50px;height:50px;border-radius:50%">
+                                        }
+                                        @item.users.nom @item.users.prenom
+                                    </h5>
+                                </a>
+                                <p>
+                                    @item.Ann_Texte.Substring(0, 200)  <a class="d-inline-block" href="/Home/Details/@item.id">Read More</a>
+                                </p>
+
+                            </div>
+                        </article>
+                    }
+                    <nav class="blog-pagination justify-content-center d-flex">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a href="#" class="page-link" aria-label="Previous">
+                                    <i class="ti-angle-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link">1</a>
+                            </li>
+                            <li class="page-item active">
+                                <a href="#" class="page-link">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link" aria-label="Next">
+                                    <i class="ti-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                
+                    <aside class="single_sidebar_widget post_category_widget">
+                        <h4 class="widget_title">Category</h4>
+                        <ul class="list cat-list">
+                            @foreach (var item in Model.GetCategories)
+                            {
+                                var countt = item.GetAnnonces.Count();
+                                <li>
+                                    <a href="/Home/Details_Cat/@item.id" class="d-flex">
+                                        <p>@item.nom_Cat</p>
+                                        <p> (@countt)</p>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </aside>
+
+                    <aside class="single_sidebar_widget popular_post_widget">
+                        <h3 class="widget_title">Category</h3>
+
+                        @foreach (var item in Model.GetCategories)
+                        {
+                            <div class="media post_item">
+                                <img src="~/Image_Cat/@item.Image" style="width:80px;height:80px" alt="post">
+                                <div class="media-body">
+                                    <a href="/Home/Details_Cat/@item.id">
+                                        <h3>Get the Illusion of Fuller Lashes by “@item.nom_Cat”</h3>
+                                    </a>
+
+                                </div>
+                            </div>
+                        }
+                    </aside>
+                    <aside class="single_sidebar_widget tag_cloud_widget">
+                        <h4 class="widget_title">Tag Clouds</h4>
+                        <ul class="list">
+                            <li>
+                                <a href="#">project</a>
+                            </li>
+                            <li>
+                                <a href="#">love</a>
+                            </li>
+                            <li>
+                                <a href="#">technology</a>
+                            </li>
+                            <li>
+                                <a href="#">travel</a>
+                            </li>
+                            <li>
+                                <a href="#">restaurant</a>
+                            </li>
+                            <li>
+                                <a href="#">life style</a>
+                            </li>
+                            <li>
+                                <a href="#">design</a>
+                            </li>
+                            <li>
+                                <a href="#">illustration</a>
+                            </li>
+                        </ul>
+                    </aside>
+
+
+                    <aside class="single_sidebar_widget instagram_feeds">
+                        <h4 class="widget_title">Instagram Feeds</h4>
+                        <ul class="instagram_row flex-wrap">
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_5.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_6.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_7.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_8.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_9.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="~/assets/img/post/post_10.png" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+
+
+                    <aside class="single_sidebar_widget newsletter_widget">
+                        <h4 class="widget_title">Newsletter</h4>
+
+                        <form action="#">
+                            <div class="form-group">
+                                <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                            </div>
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                    type="submit">
+                                Subscribe
+                            </button>
+                        </form>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section principal{}

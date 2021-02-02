@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<Annonce_Asp.netCore.Models.AppUsers> SignInManager
+@inject UserManager<Annonce_Asp.netCore.Models.AppUsers> UserManager
+
+   
+        <nav>
+            <ul id="navigation">
+                <li><a href="/Home/index">Home</a></li>
+                <li><a href="/Annoces/Index">My Annonce</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="/Affichage_Latests_News/Index">Latest News</a></li>
+                <li><a href="/Account/Contact">Contact</a></li>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    var userId = @UserManager.GetUserId(User);
+                    var getuser = UserManager.Users.SingleOrDefault(u => u.Id == userId);
+                    <li>
+
+                        <a href="#">
+                            @if (getuser.image == null)
+                            {
+                                <i class="fa fa-user"></i> @getuser.UserName
+
+                            }
+                            @if (getuser.image != null)
+                            {
+                                <img style="width:35px;height:35px;border-radius:50%" class="img-responsive" src="~/Image_User/@getuser.image" /> @getuser.UserName
+
+                            }
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/Change/changePassword">Change Password</a></li>
+                            @if (getuser.image == null)
+                            {
+                                <li><a href="/Change/change_Image">Add Image</a></li>
+                            }@if (getuser.image != null)
+                            {
+                                <li><a href="/Change/change_Image">Change Image</a></li>
+                            }
+                            @if (getuser.UserType == "Admin")
+                            {
+                                <li><a href="/Categories/Index">Dashbord</a></li>
+                            }
+                            <li><a asp-action="logout" asp-controller="Account">logout</a></li>
+                        </ul>
+                    </li>
+
+                }
+                @if (!SignInManager.IsSignedIn(User))
+                {
+                    <li><a href="/Account/login"><i class="fa fa-lock"></i> login</a></li>
+                    <li><a href="/Account/Registre"><i class="fa fa-user"></i> Register</a></li>
+                }
+            </ul>
+        </nav>
+    

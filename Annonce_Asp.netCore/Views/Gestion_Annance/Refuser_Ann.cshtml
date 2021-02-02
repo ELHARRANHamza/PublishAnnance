@@ -1,0 +1,67 @@
+﻿@model Annonce_Asp.netCore.Models.Annonces
+@{
+    ViewData["Title"] = "Valider_Ann";
+}
+
+<hr />
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">Commentaire a <i class="fa fa-calendar"></i> @Model.date_Publiciter</h6>
+            </a>
+
+            <div class="collapse show" id="collapseCardExample">
+                <div class="card-body">
+                    Description :  <strong>@Model.Ann_Texte</strong>
+                    <br />
+                    email :  <strong>@Model.Ann_Email</strong>
+                    <br />
+                    Region :  <strong>@Model.region.Region_Nom</strong>
+                    <br />
+                    Ville :  <strong>@Model.ville.ville_Name</strong>
+                    <br />
+                    Catégories :  <strong>@Model.categories.nom_Cat</strong>
+                    <br />
+                    Télephone :  <strong>@Model.Telephone</strong>
+                    <br />
+                    Code Postal :  <strong>@Model.Code_Postal</strong>
+                    <br />
+                </div>
+                <form asp-action="Refuser_Ann">
+                    <div class="form-group" style="margin-left:10px">
+                        <button type="submit" class="btn btn-danger btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                            <span class="text">Refuser</span>
+                        </button>
+                        <a asp-action="Index_Envoyer" class="btn btn-info btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </span>
+                            <span class="text">Annuler</span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="~/Admin/undraw_posting_photo.svg" alt="">
+                </div>
+                <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
+                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+

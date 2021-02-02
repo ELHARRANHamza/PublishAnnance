@@ -1,0 +1,59 @@
+﻿@model IList<Annonce_Asp.netCore.Models.Annonces>
+    <h1 class="h3 mb-2 text-gray-800">Liste Des Annonces Envoyées</h1>
+<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"><a asp-action="Create" class="btn btn-primary">Create New</a></h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                       
+                        <th>Ville</th>
+                        <th>Region</th>
+                        <th>Date Publicité</th>
+                        <th>Images</th>
+                        <th>Catégories</th>
+                        <th>Validation</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Description</th>
+                      
+                        <th>Ville</th>
+                        <th>Region</th>
+                        <th>Date Publicité</th>
+                        <th>Images</th>
+                        <th>Catégories</th>
+                        <th>Validation</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Ann_Texte.Substring(0, 50)......</td>
+                      
+                        <td>@item.ville.ville_Name</td>
+                        <td>@item.region.Region_Nom</td>
+                        <td>@item.date_Publiciter</td>
+                        <td><img src="~/Image_Ann/@item.images" class="img-thumbnail" style="width:100px;height:90px"></td>
+                        <td>@item.categories.nom_Cat</td>
+                        <td>
+                            <a class="btn btn-outline-success" href="/Gestion_Annance/Valider_Ann/@item.id"><i class="fa fa-check"></i></a>
+                            <a class="btn btn-outline-danger"  href="/Gestion_Annance/Refuser_Ann/@item.id"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

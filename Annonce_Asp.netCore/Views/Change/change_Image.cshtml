@@ -1,0 +1,27 @@
+﻿@model Annonce_Asp.netCore.ViewModel.AddImage_ViewModel
+
+<h4>Add Your Image</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Change_Image" enctype="multipart/form-data">
+            @if (Model.image != null)
+            {
+                <div style="text-align:center">
+                    <img style="border-radius:50%;width:250px;height:250px" class="img-thumbnail" src="~/Image_User/@Model.image" />
+                </div>
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="file" class="control-label"></label>
+                <input type="file" asp-for="file" name="file" class="form-control" />
+                <span asp-validation-for="file" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save"  class="genric-btn success circle arrow" />
+                <a href="/Dashbord/Index"  class="genric-btn info circle arrow">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section principal{ }
